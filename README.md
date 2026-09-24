@@ -9,6 +9,7 @@
 A Plasticity-to-Houdini bridge.
 
 Press **Update Plasticity** to fetch visible or all Plasticity geometry; it is intentionally not a persistent live link.
+
 Allows Houdini side control of the meshing and brings in various attributes - like material and face id - useful for further processing.
 
 
