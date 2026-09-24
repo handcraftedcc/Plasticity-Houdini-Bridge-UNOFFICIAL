@@ -1,4 +1,4 @@
-# Plasticity Houdini Bridge
+# Plasticity Houdini Bridge (Unofficial)
 
 <p align="center">
   <img src="assets/PlasticityHoudiniBridge.png" alt="Plasticity Houdini Bridge" width="240">
