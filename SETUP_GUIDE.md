@@ -17,7 +17,7 @@ forward slashes:
     "enable": true,
     "env": [
         {
-            "PLASTICITYBRIDGE": "C:/Users/Dominik/Documents/Github Repos/Plasticity Houdini Bridge"
+            "PLASTICITYBRIDGE": "C:/path/to/Plasticity Houdini Bridge"
         }
     ],
     "path": "$PLASTICITYBRIDGE"
