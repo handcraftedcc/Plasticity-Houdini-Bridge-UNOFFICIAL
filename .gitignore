@@ -1,0 +1,5 @@
+/3rdparty
+/otls/backup
+/scripts/python/plasticity_houdini_bridge/__pycache__
+/scripts/python/shelf/__pycache__
+/scripts/python/sop/__pycache__

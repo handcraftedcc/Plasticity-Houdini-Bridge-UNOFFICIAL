@@ -1,0 +1,9 @@
+{
+    "enable": true,
+    "env": [
+        {
+            "PLASTICITYBRIDGE": "PATH/TO/PlasticityHoudiniBridge"
+        }
+    ],
+    "path": "$PLASTICITYBRIDGE"
+}
