@@ -1,7 +1,7 @@
 # Plasticity Houdini Bridge
 
 <p align="center">
-  <img src="assets/PlasticityHoudiniBridge.svg" alt="Plasticity Houdini Bridge" width="240">
+  <img src="assets/PlasticityHoudiniBridge.png" alt="Plasticity Houdini Bridge" width="240">
 </p>
 
 > **Unofficial community project.** This is not affiliated with, endorsed by, or supported by Plasticity.
