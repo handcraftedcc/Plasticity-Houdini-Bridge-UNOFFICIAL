@@ -4,7 +4,7 @@
   <img src="assets/PlasticityHoudiniBridge.png" alt="Plasticity Houdini Bridge" width="240">
 </p>
 
-> **Unofficial community project.** This is not affiliated with, endorsed by, or supported by Plasticity.
+> **Unofficial community project.** This is not affiliated with, endorsed by, or supported by Plasticity or SideFx.
 
 A Plasticity-to-Houdini bridge.
 
