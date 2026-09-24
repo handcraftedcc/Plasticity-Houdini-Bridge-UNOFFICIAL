@@ -4,6 +4,8 @@
   <img src="assets/PlasticityHoudiniBridge.svg" alt="Plasticity Houdini Bridge" width="240">
 </p>
 
+> **Unofficial community project.** This is not affiliated with, endorsed by, or supported by Plasticity.
+
 A pull-based Plasticity-to-Houdini mesh bridge for Houdini Python Snippet and
 Python SOP nodes. Press **Update Plasticity** to fetch visible or all Plasticity
 geometry; it is intentionally not a persistent live link.
