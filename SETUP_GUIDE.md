@@ -24,65 +24,27 @@ forward slashes:
 }
 ```
 
-Restart Houdini after saving the package file. This makes
-`plasticity_houdini_bridge` importable from Houdini Python.
+Restart Houdini after saving the package file. This loads the Plasticity Bridge
+HDA and its supporting Python package.
 
-## 2. Create the node
+## 2. Create and use the HDA
 
 1. Enter a Geometry network.
-2. Create a **Python Snippet** SOP.
-3. Open its **Python Code** parameter and paste this exact code:
-
-```python
-from plasticity_houdini_bridge.sop import cook_python_snippet
-
-return cook_python_snippet(hou.pwd())
-```
-
-The same code is available in
-`scripts/python/sop/plasticity_fetch.py`.
-
-## 3. Create the bridge parameters
-
-Select the Python Snippet SOP, then run this as a Houdini Shelf Tool:
-
-```python
-from plasticity_houdini_bridge.parameter_ui import configure_selected_nodes
-
-configure_selected_nodes()
-```
-
-The source version is
-`scripts/python/shelf/create_plasticity_fetch_parameters.py`.
-
-To create the Shelf Tool:
-
-1. In Houdini, click the `+` on the shelf and choose **New Tool**.
-2. Give it a name such as `Configure Plasticity Fetch`.
-3. Set **Script Language** to Python.
-4. Paste the two-line script above into the Script tab and save it.
-5. With one or more Python Snippet or classic Python SOP nodes selected, click
-   the tool.
-
-The installer is safe to run again: it preserves existing values and only adds
-missing bridge parameters.
-
-## 4. Fetch Plasticity geometry
-
-On the configured SOP:
-
-1. Set **Plasticity Server** to the server address, normally
+2. Press Tab and create a **Plasticity Bridge** SOP.
+3. Set **Plasticity Server** to the bridge address, normally
    `localhost:8980`.
-2. Choose **Fetch Scope**: `Visible` or `All`.
-3. Set **Unit Scale** if the incoming model needs scaling.
-   Use **Faceting Settings** to choose Simple (Tolerance and Angle) or
-   Advanced (separate edge and surface controls).
-4. Press **Update Plasticity**.
+4. Choose **Fetch Scope** (`Visible` or `All`) and configure scale, import,
+   and faceting controls as needed.
+5. Press **Update Plasticity**.
 
 The node connects, performs a capability handshake, requests the selected
 snapshot, and outputs Houdini polygons. It is deliberately pull-based: editing
 parameters does not contact Plasticity. A new request occurs only when the
 button is pressed.
+
+Use **Faceting Settings** to choose Simple (Tolerance and Angle) or Advanced
+(separate edge and surface controls). Select **Snapshot Then Re-facet** in
+**Update Mode** for those faceting settings to be sent to Plasticity.
 
 ## Output attributes
 
@@ -96,24 +58,18 @@ The output includes vertex normal `N` when enabled, plus primitive attributes:
 Detail attributes identify the document, file version, source server, and
 import statistics.
 
-## Classic Python SOP alternative
+## Development-only Python builders
 
-For a classic **Python** SOP, select it and run the same shelf tool. If its
-Python Code field is empty, the setup tool installs the correct wrapper. You
-can also paste this manually:
-
-```python
-from plasticity_houdini_bridge.sop import cook_python_sop
-
-cook_python_sop(hou.pwd())
-```
+The HDA is the complete user-facing interface. The Python Snippet/Python SOP
+wrappers and the shelf parameter installer in `scripts/python/` are retained
+only to build, inspect, or develop the HDA. End users do not need to paste
+Python code or create a shelf tool.
 
 ## Troubleshooting
 
 - **`No connection could be made` / connection refused**: Plasticity is not
   listening at the configured address. Verify the bridge is enabled and that
-  its actual host and port match **Plasticity Server**. The local bridge test
-  currently found no listener on `localhost:8980`.
+  its actual host and port match **Plasticity Server**.
 - **`Plasticity server does not support List Visible/All`**: use a Plasticity
   build with the current bridge protocol enabled.
 - **ModuleNotFoundError**: restart Houdini and verify the package JSON uses

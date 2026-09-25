@@ -2,25 +2,22 @@
 
 ## Goal
 
-Create a pull-based Plasticity-to-Houdini mesh bridge. A user configures a
-Python Snippet or classic Python SOP, then presses **Update Plasticity** to
-request a snapshot from Plasticity and replace the SOP output. The bridge is
-not a persistent live link and does not upload Houdini geometry to Plasticity.
+Create a pull-based Plasticity-to-Houdini mesh bridge. Users configure the
+Plasticity Bridge HDA, then press **Update Plasticity** to request a snapshot
+from Plasticity and replace the SOP output. The bridge is not a persistent live
+link and does not upload Houdini geometry to Plasticity.
 
 ## User workflow
 
 1. Install this repository as a Houdini package.
-2. Create a **Python Snippet** SOP or a classic **Python** SOP.
-3. Paste the matching wrapper from `scripts/python/sop/`, select the SOP, and
-   run the shelf setup script.
-4. Configure the Plasticity server (normally `localhost:8980`) and import
+2. Create the **Plasticity Bridge** HDA in a Geometry network.
+3. Configure the Plasticity server (normally `localhost:8980`) and import
    controls.
-5. Press **Update Plasticity** whenever the Plasticity scene or bridge
+4. Press **Update Plasticity** whenever the Plasticity scene or bridge
    settings should be re-fetched.
 
-The button increments a hidden update generation and force-cooks the SOP. The
-ordinary spare parameters have no Python Snippet bindings, so editing them does
-not make a network request or recook the node.
+The button increments a hidden update generation and force-cooks the HDA's
+internal SOP. Editing ordinary parameters does not make a network request.
 
 ## Scope
 
@@ -32,8 +29,9 @@ not make a network request or recook the node.
 - Houdini polygons, vertex normals, object/group/face identity attributes, and
   detail provenance attributes.
 - Optional `REFACET_SOME` flow for all fetched mesh objects.
-- A Python Snippet wrapper, a classic Python SOP wrapper, and an idempotent
-  shelf parameter installer.
+- A user-facing Plasticity Bridge HDA with all bridge controls.
+- Python Snippet/Python SOP wrappers and an idempotent shelf parameter
+  installer, retained only as HDA construction and development tools.
 
 ### Deliberately excluded from version 1
 
